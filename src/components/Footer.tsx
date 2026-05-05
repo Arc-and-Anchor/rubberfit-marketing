@@ -27,13 +27,25 @@ export function Footer() {
             <div className="rf-footer-col-label">Product</div>
             <ul>
               <li>
-                <Link href="https://rubberfit.app/login" target="_blank" rel="noreferrer">
+                <Link href="https://app.rubberfit.app/login" target="_blank" rel="noreferrer">
                   Open the app →
                 </Link>
               </li>
-              <li><a href="#features">The engine</a></li>
-              <li><a href="#flow">How it ships</a></li>
-              <li><a href="#stats">Numbers</a></li>
+              <li><Link href="/cutting-engine">The cutting engine</Link></li>
+              <li><Link href="/inventory">Inventory</Link></li>
+              <li><Link href="/jobs">Jobs</Link></li>
+              <li><Link href="/how-it-works">How it works</Link></li>
+            </ul>
+          </div>
+
+          <div className="rf-footer-col">
+            <div className="rf-footer-col-label">Trust</div>
+            <ul>
+              <li><Link href="/security">Security</Link></li>
+              <li><Link href="/pricing">Pricing</Link></li>
+              <li>
+                <a href="mailto:security@rubberfit.app">security@rubberfit.app</a>
+              </li>
             </ul>
           </div>
 
@@ -50,11 +62,7 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link
-                  href="https://www.arcanchor.com"
-                  target="_blank"
-                  rel="noreferrer"
-                >
+                <Link href="https://www.arcanchor.com" target="_blank" rel="noreferrer">
                   Arc &amp; Anchor
                 </Link>
               </li>
@@ -67,14 +75,7 @@ export function Footer() {
                   Other projects
                 </Link>
               </li>
-            </ul>
-          </div>
-
-          <div className="rf-footer-col">
-            <div className="rf-footer-col-label">Reach</div>
-            <ul>
               <li><a href="mailto:hello@rubberfit.app">hello@rubberfit.app</a></li>
-              <li><a href="mailto:tbowles@arcanchor.com">tbowles@arcanchor.com</a></li>
             </ul>
           </div>
         </div>

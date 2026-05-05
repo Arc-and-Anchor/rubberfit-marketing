@@ -1,17 +1,21 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
 
 const links = [
-  { href: "#features", label: "Engine" },
-  { href: "#stats", label: "Numbers" },
-  { href: "#flow", label: "How it ships" },
-  { href: "#team", label: "Creators" },
+  { href: "/cutting-engine", label: "Engine" },
+  { href: "/inventory", label: "Inventory" },
+  { href: "/jobs", label: "Jobs" },
+  { href: "/how-it-works", label: "How it works" },
+  { href: "/security", label: "Security" },
+  { href: "/pricing", label: "Pricing" },
 ];
 
 export function SiteNav() {
+  const pathname = usePathname() ?? "/";
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -21,10 +25,13 @@ export function SiteNav() {
     };
   }, [open]);
 
+  const isActive = (href: string) => pathname === href || pathname.startsWith(href + "/");
+  const close = () => setOpen(false);
+
   return (
     <LayoutGroup>
       <header className="rf-nav">
-        <Link href="/" className="rf-nav-brand" aria-label="Rubberfit home">
+        <Link href="/" className="rf-nav-brand" aria-label="Rubberfit home" onClick={close}>
           <span className="rf-nav-brand-mark" aria-hidden="true" />
           <span className="rf-nav-brand-name">Rubberfit</span>
           <span className="rf-nav-brand-mono">REV · 2026.05</span>
@@ -33,15 +40,27 @@ export function SiteNav() {
         <div style={{ flex: 1 }} />
 
         <ul className="rf-nav-links rf-nav-links-desktop">
-          {links.map((l) => (
-            <li key={l.href}>
-              <Link href={l.href}>{l.label}</Link>
-            </li>
-          ))}
+          {links.map((l) => {
+            const active = isActive(l.href);
+            return (
+              <li key={l.href}>
+                <Link href={l.href} onClick={close}>
+                  {l.label}
+                  {active ? (
+                    <motion.span
+                      layoutId="rf-nav-active-tick"
+                      className="rf-nav-active-tick"
+                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                    />
+                  ) : null}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
 
         <Link
-          href="https://rubberfit.app/login"
+          href="https://app.rubberfit.app/login"
           className="rf-nav-cta rf-nav-cta-desktop"
           target="_blank"
           rel="noreferrer"
@@ -69,7 +88,6 @@ export function SiteNav() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
-              onClick={() => setOpen(false)}
             >
               {links.map((l, i) => (
                 <motion.div
@@ -78,11 +96,11 @@ export function SiteNav() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{
                     duration: 0.32,
-                    delay: 0.06 + i * 0.05,
+                    delay: 0.06 + i * 0.04,
                     ease: [0.22, 1, 0.36, 1],
                   }}
                 >
-                  <Link href={l.href}>{l.label}</Link>
+                  <Link href={l.href} onClick={close}>{l.label}</Link>
                 </motion.div>
               ))}
               <motion.div
@@ -90,14 +108,15 @@ export function SiteNav() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{
                   duration: 0.32,
-                  delay: 0.06 + links.length * 0.05,
+                  delay: 0.06 + links.length * 0.04,
                   ease: [0.22, 1, 0.36, 1],
                 }}
               >
                 <Link
-                  href="https://rubberfit.app/login"
+                  href="https://app.rubberfit.app/login"
                   target="_blank"
                   rel="noreferrer"
+                  onClick={close}
                 >
                   Open the app →
                 </Link>
