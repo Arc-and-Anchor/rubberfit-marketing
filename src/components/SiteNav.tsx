@@ -11,7 +11,8 @@ const links = [
   { href: "/jobs", label: "Jobs" },
   { href: "/how-it-works", label: "How it works" },
   { href: "/security", label: "Security" },
-  { href: "/pricing", label: "Pricing" },
+  { href: "https://docs.rubberfit.app", label: "Docs", external: true },
+  { href: "/pricing", label: "Pricing", isPricing: true },
 ];
 
 export function SiteNav() {
@@ -42,9 +43,18 @@ export function SiteNav() {
         <ul className="rf-nav-links rf-nav-links-desktop">
           {links.map((l) => {
             const active = isActive(l.href);
+            const linkClass = l.isPricing
+              ? "rf-nav-link-pricing"
+              : undefined;
             return (
               <li key={l.href}>
-                <Link href={l.href} onClick={close}>
+                <Link
+                  href={l.href}
+                  onClick={close}
+                  className={linkClass}
+                  target={l.external ? "_blank" : undefined}
+                  rel={l.external ? "noreferrer" : undefined}
+                >
                   {l.label}
                   {active ? (
                     <motion.span

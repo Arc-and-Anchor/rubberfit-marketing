@@ -174,6 +174,42 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   height: 2px;
   background: var(--color-signal);
 }
+
+/* Pricing link — interactive hover */
+.rf-nav-links a.rf-nav-link-pricing {
+  position: relative;
+  padding: 6px 12px;
+  margin: 0 -4px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--color-graphite);
+  opacity: 1;
+  transition:
+    background 200ms ease,
+    color 200ms ease,
+    border-color 200ms ease,
+    transform 180ms ease;
+}
+.rf-nav-links a.rf-nav-link-pricing::before {
+  content: "";
+  position: absolute;
+  left: -4px;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  background: var(--color-signal);
+  transform: translateY(-50%);
+  transition: transform 220ms ease;
+}
+.rf-nav-links a.rf-nav-link-pricing:hover {
+  background: var(--color-graphite);
+  color: #fff;
+  border-color: var(--color-graphite);
+}
+.rf-nav-links a.rf-nav-link-pricing:hover::before {
+  transform: translateY(-50%) translateX(-3px);
+  background: var(--color-signal);
+}
 .rf-nav-cta {
   display: inline-flex;
   align-items: center;
