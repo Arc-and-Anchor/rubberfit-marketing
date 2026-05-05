@@ -77,21 +77,20 @@ export function SubPage({
               <span className="tick" aria-hidden="true" />
               <span>Ready when you are</span>
             </div>
-            <h2 className="rf-h2" style={{ color: "#fff", maxWidth: "20ch", margin: "0 auto" }}>
-              Stop wasting <em style={{ color: "var(--color-signal)" }}>material</em>.
+            <h2 className="rf-h2" style={{ color: "#fff", maxWidth: "22ch", margin: "0 auto" }}>
+              See the price. <em style={{ color: "var(--color-signal)" }}>Start a trial.</em>
             </h2>
             <p className="rf-body" style={{ color: "#bcbfc6", margin: "20px auto 36px", maxWidth: "44ch" }}>
-              Open the app and run a real cut plan against your own stock.
-              Takes ten minutes. No sales call required.
+              Per-seat pricing. 14-day free trial, no credit card. Run real
+              cuts against your own stock — if it doesn&apos;t pay for itself
+              the first week, walk.
             </p>
             <Link
-              href="https://app.rubberfit.app/login"
+              href="/pricing"
               className="rf-cta-primary"
               style={{ background: "var(--color-signal)", borderBottomColor: "#fff" }}
-              target="_blank"
-              rel="noreferrer"
             >
-              <span>Open the app</span>
+              <span>See pricing</span>
               <span className="arrow" aria-hidden="true">→</span>
             </Link>
           </div>

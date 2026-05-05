@@ -26,11 +26,7 @@ export function Footer() {
           <div className="rf-footer-col">
             <div className="rf-footer-col-label">Product</div>
             <ul>
-              <li>
-                <Link href="https://app.rubberfit.app/login" target="_blank" rel="noreferrer">
-                  Open the app →
-                </Link>
-              </li>
+              <li><Link href="/pricing">Pricing</Link></li>
               <li><Link href="/cutting-engine">The cutting engine</Link></li>
               <li><Link href="/inventory">Inventory</Link></li>
               <li><Link href="/jobs">Jobs</Link></li>

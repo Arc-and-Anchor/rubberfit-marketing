@@ -117,13 +117,8 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.36, ease }}
               >
-                <Link
-                  href="https://app.rubberfit.app/login"
-                  className="rf-cta-primary"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <span>Open the app</span>
+                <Link href="/pricing" className="rf-cta-primary">
+                  <span>See pricing</span>
                   <span className="arrow" aria-hidden="true">→</span>
                 </Link>
                 <Link href="/cutting-engine" className="rf-cta-secondary">
@@ -262,25 +257,24 @@ export default function Home() {
             </div>
             <h2
               className="rf-h2"
-              style={{ color: "#fff", maxWidth: "20ch", margin: "0 auto" }}
+              style={{ color: "#fff", maxWidth: "22ch", margin: "0 auto" }}
             >
-              Stop wasting <em style={{ color: "var(--color-signal)" }}>material</em>.
+              See the price. <em style={{ color: "var(--color-signal)" }}>Start a trial.</em>
             </h2>
             <p
               className="rf-body"
               style={{ color: "#bcbfc6", margin: "20px auto 36px", maxWidth: "44ch" }}
             >
-              Open the app and run a real cut plan against your own stock.
-              Takes ten minutes. No sales call required.
+              Per-seat pricing — Standard $49, Pro $89, Max $199. 14-day free
+              trial, no credit card. Enterprise (100+ seats) is fixed-rate,
+              contact us.
             </p>
             <Link
-              href="https://app.rubberfit.app/login"
+              href="/pricing"
               className="rf-cta-primary"
               style={{ background: "var(--color-signal)", borderBottomColor: "#fff" }}
-              target="_blank"
-              rel="noreferrer"
             >
-              <span>Open the app</span>
+              <span>See pricing</span>
               <span className="arrow" aria-hidden="true">→</span>
             </Link>
           </div>
