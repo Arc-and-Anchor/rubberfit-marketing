@@ -263,11 +263,11 @@ export default function Home() {
             </h2>
             <p
               className="rf-body"
-              style={{ color: "#bcbfc6", margin: "20px auto 36px", maxWidth: "44ch" }}
+              style={{ color: "#bcbfc6", margin: "20px auto 36px", maxWidth: "48ch" }}
             >
-              Per-seat pricing — Standard $49, Pro $89, Max $199. 14-day free
-              trial, no credit card. Enterprise (100+ seats) is fixed-rate,
-              contact us.
+              Per-seat pricing — Standard $199, Pro $349, Max $699 monthly
+              (20% off annual). 14-day free trial, no credit card. Standard
+              customers typically save $25K–$50K on a single optimized job.
             </p>
             <Link
               href="/pricing"

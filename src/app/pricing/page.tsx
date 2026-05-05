@@ -10,20 +10,22 @@ type Plan = {
   code: string;
   name: string;
   price: string;
+  annual: string;
   period: string;
   summary: string;
+  forWho?: string;
   features: string[];
   cta: string;
   href: string;
   highlighted: boolean;
-  forWho?: string;
 };
 
 const plans: Plan[] = [
   {
     code: "STANDARD",
     name: "Standard",
-    price: "$49",
+    price: "$199",
+    annual: "$159",
     period: "/ seat / month",
     summary: "Everything an operator needs to receive, plan, cut, and ship.",
     forWho: "Small fabricators, single shop floor.",
@@ -42,7 +44,8 @@ const plans: Plan[] = [
   {
     code: "PRO",
     name: "Pro",
-    price: "$89",
+    price: "$349",
+    annual: "$279",
     period: "/ seat / month",
     summary: "Standard plus the analytics and audit depth a manager needs.",
     forWho: "Growing fabricators with multi-operator shops.",
@@ -62,7 +65,8 @@ const plans: Plan[] = [
   {
     code: "MAX",
     name: "Max",
-    price: "$199",
+    price: "$699",
+    annual: "$559",
     period: "/ seat / month",
     summary: "Pro plus the full CRM + AI nesting engine, fully unlocked.",
     forWho: "Mid-market fabricators with sales pipelines and complex jobs.",
@@ -83,6 +87,7 @@ const plans: Plan[] = [
     code: "ENTERPRISE",
     name: "Enterprise",
     price: "Custom",
+    annual: "",
     period: "fixed-rate · 100+ seats",
     summary: "Fixed-rate contracts for organizations with 100+ employees.",
     forWho: "Enterprise manufacturers, regulated industries.",
@@ -109,11 +114,15 @@ const faqs = [
   },
   {
     q: "How is pricing structured?",
-    a: "Per-seat per month, billed monthly. Annual gets a discount (~20%). Each operator who logs in counts as one seat. No per-pack metering, no per-PDF charges, no hidden seat upgrades.",
+    a: "Per-seat per month, billed monthly or annually. Annual gets a 20% discount, paid upfront. Each operator who logs in counts as one seat. No per-pack metering, no per-PDF charges, no hidden seat upgrades.",
+  },
+  {
+    q: "Why is it priced this way?",
+    a: "Rubberfit replaces a typical $750-$1000/seat industrial stack (ProNest or SigmaNEST for nesting, plus Plex or Epicor for ops, plus a CRM bolt-on). One product, one bill, one source of truth. Standard customers routinely report material savings of $25K-$50K per optimized job — typical payback is under one shift.",
   },
   {
     q: "What's the difference between Standard, Pro, and Max?",
-    a: "Standard runs the floor — receive, plan, cut, ship. Pro adds the analytics and audit depth a manager needs. Max adds the full CRM and the AI-augmented planner. Most shops grow into Pro within a quarter.",
+    a: "Standard runs the floor — receive, plan, cut, ship. Pro adds the analytics and audit depth a manager needs (KPI dashboards, audit-log exports, supplier price-history). Max adds the full CRM and the AI-augmented planner. Most shops grow into Pro within a quarter.",
   },
   {
     q: "When does Enterprise make sense?",
@@ -136,16 +145,271 @@ export default function PricingPage() {
         eyebrow: "Pricing",
         title: (
           <>
-            One price per operator. <em>No surprises.</em>
+            Priced against the <em>material you save</em>, not the seats you fill.
           </>
         ),
-        lead: "Per-seat, per-month. Most shops start on Standard, grow into Pro within a quarter, and move to Max once the sales pipeline takes off. Enterprise is fixed-rate for organizations with 100+ employees.",
+        lead: "Rubberfit replaces a typical $750–$1,000/seat industrial stack with a single product. Per-seat pricing, predictable monthly bill, 20% annual discount. Standard customers routinely report $25K–$50K saved on a single optimized job — typical payback is under one shift.",
       }}
     >
-      {/* Plan grid */}
+      {/* ONE-JOB PAYBACK */}
+      <section className="rf-section" style={{ paddingBottom: 0 }}>
+        <div className="rf-wrap">
+          <motion.div
+            className="rf-diagram"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease }}
+            style={{
+              borderColor: "var(--color-graphite)",
+              borderWidth: 1,
+              padding: "clamp(28px, 4vw, 48px)",
+              background: "var(--color-graphite)",
+              color: "#fff",
+              marginBottom: 56,
+              position: "relative",
+              overflow: "hidden",
+            }}
+          >
+            <div
+              style={{
+                fontFamily: "var(--font-mono)",
+                fontSize: 11,
+                letterSpacing: "0.22em",
+                textTransform: "uppercase",
+                color: "var(--color-signal)",
+                marginBottom: 14,
+              }}
+            >
+              One-job payback
+            </div>
+            <h2
+              style={{
+                fontFamily: "var(--font-display)",
+                fontWeight: 600,
+                fontSize: "clamp(28px, 4vw, 48px)",
+                lineHeight: 1.05,
+                letterSpacing: "-0.025em",
+                color: "#fff",
+                margin: 0,
+                marginBottom: 18,
+                maxWidth: "32ch",
+              }}
+            >
+              5 seats at Standard pays for itself in <em style={{ color: "var(--color-signal)", fontStyle: "normal" }}>under one shift</em>.
+            </h2>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+                gap: 24,
+                marginTop: 24,
+                paddingTop: 24,
+                borderTop: "1px solid rgba(255, 255, 255, 0.08)",
+              }}
+            >
+              <div>
+                <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--color-signal)", marginBottom: 8 }}>
+                  5 seats at Standard
+                </div>
+                <div className="mono-data" style={{ fontFamily: "var(--font-display)", fontWeight: 600, fontSize: 36, letterSpacing: "-0.025em" }}>
+                  $995<span style={{ fontFamily: "var(--font-mono)", fontSize: 11, letterSpacing: "0.18em", color: "rgba(255,255,255,0.55)", marginLeft: 6 }}>/ MONTH</span>
+                </div>
+              </div>
+              <div>
+                <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--color-signal)", marginBottom: 8 }}>
+                  Typical material savings
+                </div>
+                <div className="mono-data" style={{ fontFamily: "var(--font-display)", fontWeight: 600, fontSize: 36, letterSpacing: "-0.025em" }}>
+                  $50K<span style={{ fontFamily: "var(--font-mono)", fontSize: 11, letterSpacing: "0.18em", color: "rgba(255,255,255,0.55)", marginLeft: 6 }}>/ JOB</span>
+                </div>
+              </div>
+              <div>
+                <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--color-signal)", marginBottom: 8 }}>
+                  Time to break even
+                </div>
+                <div className="mono-data" style={{ fontFamily: "var(--font-display)", fontWeight: 600, fontSize: 36, letterSpacing: "-0.025em" }}>
+                  &lt; 1<span style={{ fontFamily: "var(--font-mono)", fontSize: 11, letterSpacing: "0.18em", color: "rgba(255,255,255,0.55)", marginLeft: 6 }}>SHIFT</span>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* STACK REPLACEMENT */}
+      <section className="rf-section" style={{ paddingTop: 0, paddingBottom: 0 }}>
+        <div className="rf-wrap">
+          <SectionHeader
+            num="A"
+            eyebrow="Stack replacement"
+            title={
+              <>
+                One product. <em>One bill.</em>
+              </>
+            }
+            body="The legacy way: a CAD nesting plugin, a generic MRP, a CRM bolt-on, and the integrations that try to keep them in sync. Rubberfit replaces all three with one product."
+          />
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr",
+              gap: 0,
+              border: "1px solid var(--color-graphite)",
+              background: "var(--color-surface-raised)",
+              marginBottom: 56,
+            }}
+          >
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "1fr 140px 200px",
+                padding: "16px 24px",
+                borderBottom: "1px solid var(--color-graphite)",
+                background: "var(--color-graphite)",
+                color: "#fff",
+                fontFamily: "var(--font-mono)",
+                fontSize: 10,
+                letterSpacing: "0.22em",
+                textTransform: "uppercase",
+              }}
+              className="rf-stack-row"
+            >
+              <span>Vendor</span>
+              <span>Covers</span>
+              <span style={{ textAlign: "right" }}>Per seat / month</span>
+            </div>
+            {[
+              { vendor: "ProNest or SigmaNEST", covers: "Nesting only", price: "$250–$500", muted: false },
+              { vendor: "Plex / Epicor / E2 (MRP)", covers: "Inventory + jobs", price: "$150–$300", muted: false },
+              { vendor: "Salesforce / HubSpot (CRM)", covers: "Sales pipeline", price: "$100–$300", muted: false },
+              { vendor: "Integration / glue", covers: "Keeping them in sync", price: "$50–$200", muted: false },
+            ].map((r) => (
+              <div
+                key={r.vendor}
+                className="rf-stack-row"
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "1fr 140px 200px",
+                  padding: "18px 24px",
+                  borderBottom: "1px solid var(--color-rule)",
+                  alignItems: "center",
+                  fontSize: 14,
+                  color: "var(--color-ink-soft)",
+                }}
+              >
+                <span>{r.vendor}</span>
+                <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, letterSpacing: "0.1em", color: "var(--color-ink-soft)" }}>
+                  {r.covers}
+                </span>
+                <span
+                  className="mono-data"
+                  style={{
+                    textAlign: "right",
+                    fontFamily: "var(--font-mono)",
+                    color: "var(--color-ink)",
+                  }}
+                >
+                  {r.price}
+                </span>
+              </div>
+            ))}
+            <div
+              className="rf-stack-row"
+              style={{
+                display: "grid",
+                gridTemplateColumns: "1fr 140px 200px",
+                padding: "20px 24px",
+                borderTop: "2px solid var(--color-graphite)",
+                background: "var(--color-canvas)",
+                fontFamily: "var(--font-mono)",
+                fontSize: 11,
+                letterSpacing: "0.18em",
+                textTransform: "uppercase",
+                color: "var(--color-ink-soft)",
+                alignItems: "center",
+              }}
+            >
+              <span>Legacy stack total</span>
+              <span></span>
+              <span
+                className="mono-data"
+                style={{
+                  textAlign: "right",
+                  fontFamily: "var(--font-display)",
+                  fontWeight: 600,
+                  fontSize: 22,
+                  letterSpacing: "-0.02em",
+                  textTransform: "none",
+                  color: "var(--color-ink)",
+                }}
+              >
+                $550–$1,300
+              </span>
+            </div>
+            <div
+              className="rf-stack-row"
+              style={{
+                display: "grid",
+                gridTemplateColumns: "1fr 140px 200px",
+                padding: "24px",
+                background: "var(--color-graphite)",
+                color: "#fff",
+                alignItems: "center",
+                borderTop: "3px solid var(--color-signal)",
+              }}
+            >
+              <span style={{ fontFamily: "var(--font-display)", fontSize: 18, fontWeight: 600 }}>
+                Rubberfit · one product
+              </span>
+              <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, letterSpacing: "0.1em", color: "var(--color-signal)" }}>
+                Everything
+              </span>
+              <span
+                className="mono-data"
+                style={{
+                  textAlign: "right",
+                  fontFamily: "var(--font-display)",
+                  fontWeight: 600,
+                  fontSize: 22,
+                  letterSpacing: "-0.02em",
+                  color: "#fff",
+                }}
+              >
+                $199–$699
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* responsive: stack columns on narrow screens */}
+        <style>{`
+          @media (max-width: 720px) {
+            .rf-stack-row {
+              grid-template-columns: 1fr 1fr !important;
+              gap: 6px;
+            }
+            .rf-stack-row > span:nth-child(2) {
+              display: none;
+            }
+          }
+        `}</style>
+      </section>
+
+      {/* PLANS */}
       <section className="rf-section">
         <div className="rf-wrap">
-          <hr style={{ border: 0, borderTop: "1px solid var(--color-graphite)", marginBottom: 56 }} />
+          <SectionHeader
+            num="B"
+            eyebrow="Plans"
+            title={
+              <>
+                Per-seat. <em>No surprises.</em>
+              </>
+            }
+            body="Monthly numbers below. Annual billing carries a 20% discount, paid upfront — that's the figure in the small print."
+          />
+
           <div
             style={{
               display: "grid",
@@ -205,7 +469,7 @@ export default function PricingPage() {
                 >
                   {p.summary}
                 </p>
-                <div style={{ display: "flex", alignItems: "baseline", gap: 6, marginBottom: 8 }}>
+                <div style={{ display: "flex", alignItems: "baseline", gap: 6, marginBottom: 4 }}>
                   <span
                     style={{
                       fontFamily: "var(--font-display)",
@@ -225,11 +489,27 @@ export default function PricingPage() {
                     color: p.highlighted ? "rgba(255,255,255,0.65)" : "var(--color-ink-soft)",
                     letterSpacing: "0.1em",
                     textTransform: "uppercase",
-                    marginBottom: 24,
+                    marginBottom: 4,
                   }}
                 >
                   {p.period}
                 </div>
+                {p.annual ? (
+                  <div
+                    style={{
+                      fontFamily: "var(--font-mono)",
+                      fontSize: 10,
+                      color: p.highlighted ? "var(--color-signal)" : "var(--color-signal-deep)",
+                      letterSpacing: "0.16em",
+                      textTransform: "uppercase",
+                      marginBottom: 24,
+                    }}
+                  >
+                    {p.annual} / seat / mo · billed annually
+                  </div>
+                ) : (
+                  <div style={{ marginBottom: 24 }} />
+                )}
                 <Link
                   href={p.href}
                   className="rf-cta-primary"
@@ -247,30 +527,30 @@ export default function PricingPage() {
                   <span className="arrow" aria-hidden="true">→</span>
                 </Link>
                 {p.forWho ? (
-                  <div
-                    style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: 10,
-                      letterSpacing: "0.16em",
-                      textTransform: "uppercase",
-                      color: p.highlighted ? "var(--color-signal)" : "var(--color-signal-deep)",
-                      marginBottom: 12,
-                    }}
-                  >
-                    Best for
-                  </div>
-                ) : null}
-                {p.forWho ? (
-                  <p
-                    style={{
-                      fontSize: 13,
-                      lineHeight: 1.5,
-                      color: p.highlighted ? "rgba(255,255,255,0.78)" : "var(--color-ink)",
-                      marginBottom: 18,
-                    }}
-                  >
-                    {p.forWho}
-                  </p>
+                  <>
+                    <div
+                      style={{
+                        fontFamily: "var(--font-mono)",
+                        fontSize: 10,
+                        letterSpacing: "0.16em",
+                        textTransform: "uppercase",
+                        color: p.highlighted ? "var(--color-signal)" : "var(--color-signal-deep)",
+                        marginBottom: 12,
+                      }}
+                    >
+                      Best for
+                    </div>
+                    <p
+                      style={{
+                        fontSize: 13,
+                        lineHeight: 1.5,
+                        color: p.highlighted ? "rgba(255,255,255,0.78)" : "var(--color-ink)",
+                        marginBottom: 18,
+                      }}
+                    >
+                      {p.forWho}
+                    </p>
+                  </>
                 ) : null}
                 <ul
                   style={{
@@ -310,7 +590,6 @@ export default function PricingPage() {
             ))}
           </div>
 
-          {/* Annual discount note */}
           <p
             style={{
               fontFamily: "var(--font-mono)",
@@ -322,56 +601,8 @@ export default function PricingPage() {
               textAlign: "center",
             }}
           >
-            Annual billing · ≈ 20% discount across all per-seat tiers
+            Annual billing · 20% discount · Paid upfront
           </p>
-        </div>
-      </section>
-
-      {/* Compare strip */}
-      <section className="rf-section" style={{ paddingTop: 0 }}>
-        <div className="rf-wrap">
-          <SectionHeader
-            num="A"
-            eyebrow="How we compare"
-            title={
-              <>
-                Where Rubberfit <em>fits the market</em>.
-              </>
-            }
-            body="Rubberfit is the only product that pairs a real Rust nesting engine with a full operations suite. Everyone else is one or the other."
-          />
-          <div className="rf-stats" style={{ marginTop: 8 }}>
-            <div className="rf-stat">
-              <div className="rf-stat-label">Free Rhino plugin</div>
-              <div className="rf-stat-value mono-data">$0</div>
-              <div className="rf-stat-foot">
-                CAD-only nesting plugin. No inventory, no jobs, no operator UI.
-              </div>
-            </div>
-            <div className="rf-stat">
-              <div className="rf-stat-label">Legacy nesting (ProNest, SigmaNEST)</div>
-              <div className="rf-stat-value mono-data">$200<span className="rf-stat-unit">+</span></div>
-              <div className="rf-stat-foot">
-                Per seat / month. Nesting only. Desktop-only.
-              </div>
-            </div>
-            <div className="rf-stat">
-              <div className="rf-stat-label">General manufacturing SaaS</div>
-              <div className="rf-stat-value mono-data">$49<span className="rf-stat-unit">–</span>149</div>
-              <div className="rf-stat-foot">
-                Per seat / month. No real nesting engine — you&apos;d run two products.
-              </div>
-            </div>
-            <div className="rf-stat" style={{ background: "var(--color-graphite)", color: "#fff" }}>
-              <div className="rf-stat-label" style={{ color: "var(--color-signal)" }}>Rubberfit</div>
-              <div className="rf-stat-value mono-data" style={{ color: "#fff" }}>
-                $49<span className="rf-stat-unit" style={{ color: "var(--color-signal)" }}>–</span>199
-              </div>
-              <div className="rf-stat-foot" style={{ color: "rgba(255,255,255,0.65)" }}>
-                Per seat / month. Real nesting + full ops. One product, one bill.
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -379,7 +610,7 @@ export default function PricingPage() {
       <section id="contact" className="rf-section" style={{ background: "var(--color-surface)" }}>
         <div className="rf-wrap">
           <SectionHeader
-            num="B"
+            num="C"
             eyebrow="Common questions"
             title={
               <>
