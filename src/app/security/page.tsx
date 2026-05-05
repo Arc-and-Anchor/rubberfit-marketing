@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { SubPage, SectionHeader } from "@/components/SubPage";
+import { SecurityVisual } from "@/components/SecurityVisual";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -78,6 +79,20 @@ export default function SecurityPage() {
         lead: "We are not SOC 2 certified yet — but we run the controls a SOC 2 auditor would expect to find. This page is the unvarnished version: what's in production today, what's not, and what's on the roadmap to certification.",
       }}
     >
+      {/* Visual — defense in depth */}
+      <section className="rf-section" style={{ paddingTop: "clamp(48px, 6vw, 72px)", paddingBottom: 0 }}>
+        <div className="rf-wrap">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.7, ease }}
+          >
+            <SecurityVisual />
+          </motion.div>
+        </div>
+      </section>
+
       {/* Honesty banner */}
       <section className="rf-section" style={{ paddingTop: "clamp(40px, 6vw, 72px)", paddingBottom: 0 }}>
         <div className="rf-wrap">

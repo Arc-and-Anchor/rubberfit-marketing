@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { SubPage, SectionHeader } from "@/components/SubPage";
+import { HowItWorksVisual } from "@/components/HowItWorksVisual";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -61,6 +62,19 @@ export default function HowItWorksPage() {
         lead: "Rubberfit is built around the way a rubber-roll fabricator actually moves material — not the way a generic ERP imagines it. Every step on the floor maps to one place in the app.",
       }}
     >
+      <section className="rf-section" style={{ paddingTop: "clamp(48px, 6vw, 72px)", paddingBottom: 0 }}>
+        <div className="rf-wrap">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.7, ease }}
+          >
+            <HowItWorksVisual />
+          </motion.div>
+        </div>
+      </section>
+
       <section className="rf-section">
         <div className="rf-wrap">
           <SectionHeader

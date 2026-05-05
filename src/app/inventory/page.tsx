@@ -1,6 +1,10 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { SubPage, SectionHeader, FeatureRow } from "@/components/SubPage";
+import { InventoryVisual } from "@/components/InventoryVisual";
+
+const ease = [0.22, 1, 0.36, 1] as const;
 
 export default function InventoryPage() {
   return (
@@ -15,6 +19,19 @@ export default function InventoryPage() {
         lead: "Rubberfit treats material like an engineering asset, not a line item. Rolls have lineage. Offcuts are first-class. Reorder rules fire before you run out — not after.",
       }}
     >
+      {/* Visual */}
+      <section className="rf-section" style={{ paddingTop: "clamp(48px, 6vw, 72px)" }}>
+        <div className="rf-wrap">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.7, ease }}
+          >
+            <InventoryVisual />
+          </motion.div>
+        </div>
+      </section>
       {/* Rolls */}
       <section className="rf-section">
         <div className="rf-wrap">
