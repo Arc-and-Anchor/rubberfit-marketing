@@ -60,12 +60,11 @@ export function SiteNav() {
         </ul>
 
         <Link
-          href="https://app.rubberfit.app/login"
+          href="/pricing"
           className="rf-nav-cta rf-nav-cta-desktop"
-          target="_blank"
-          rel="noreferrer"
+          onClick={close}
         >
-          Open the app →
+          See pricing →
         </Link>
 
         <button
@@ -112,13 +111,8 @@ export function SiteNav() {
                   ease: [0.22, 1, 0.36, 1],
                 }}
               >
-                <Link
-                  href="https://app.rubberfit.app/login"
-                  target="_blank"
-                  rel="noreferrer"
-                  onClick={close}
-                >
-                  Open the app →
+                <Link href="/pricing" onClick={close}>
+                  See pricing →
                 </Link>
               </motion.div>
             </motion.div>
