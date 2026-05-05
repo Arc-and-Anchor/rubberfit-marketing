@@ -1,6 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter, Manrope, JetBrains_Mono } from "next/font/google";
+import { MotionProvider } from "@/components/MotionProvider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -37,7 +38,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.variable} ${manrope.variable} ${mono.variable}`}>
         <div className="rf-grid-bg" aria-hidden="true" />
-        {children}
+        <MotionProvider>{children}</MotionProvider>
       </body>
     </html>
   );
