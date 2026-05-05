@@ -175,6 +175,19 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   background: var(--color-signal);
 }
 
+/* Home page — waste/offcut section grid */
+.rf-waste-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+}
+@media (min-width: 880px) {
+  .rf-waste-grid {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: 72px;
+  }
+}
+
 /* Pricing link — interactive hover */
 .rf-nav-links a.rf-nav-link-pricing {
   position: relative;

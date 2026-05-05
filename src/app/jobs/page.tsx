@@ -1,6 +1,10 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { SubPage, SectionHeader, FeatureRow } from "@/components/SubPage";
+import { JobsVisual } from "@/components/JobsVisual";
+
+const ease = [0.22, 1, 0.36, 1] as const;
 
 export default function JobsPage() {
   return (
@@ -15,6 +19,18 @@ export default function JobsPage() {
         lead: "Jobs are the spine of the shop floor. Customer info, dimensions, material, due date, operator assignment, status — and a shareable PDF receipt the customer reads on their phone.",
       }}
     >
+      <section className="rf-section" style={{ paddingTop: "clamp(48px, 6vw, 72px)" }}>
+        <div className="rf-wrap">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.7, ease }}
+          >
+            <JobsVisual />
+          </motion.div>
+        </div>
+      </section>
       <section className="rf-section">
         <div className="rf-wrap">
           <SectionHeader
