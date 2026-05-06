@@ -411,6 +411,7 @@ export default function PricingPage() {
           />
 
           <div
+            className="rf-tier-grid"
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
