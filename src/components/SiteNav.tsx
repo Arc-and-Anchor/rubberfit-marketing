@@ -66,7 +66,10 @@ export function SiteNav() {
 
         <Link
           href="/pricing"
-          className="rf-nav-cta rf-nav-cta-desktop"
+          className={`rf-nav-cta rf-nav-cta-desktop${
+            isActive("/pricing") ? " rf-nav-cta--active" : ""
+          }`}
+          aria-current={isActive("/pricing") ? "page" : undefined}
           onClick={close}
         >
           See pricing →

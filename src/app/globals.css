@@ -411,6 +411,12 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   transition: background 180ms ease, transform 180ms ease;
 }
 .rf-nav-cta:hover { background: var(--color-signal); border-bottom-color: var(--color-graphite); }
+.rf-nav-cta.rf-nav-cta--active,
+.rf-nav-cta.rf-nav-cta--active:hover {
+  background: var(--color-signal);
+  border-bottom-color: var(--color-graphite);
+  color: #fff;
+}
 @media (max-width: 767px) {
   .rf-nav-links-desktop { display: none; }
   .rf-nav-cta-desktop { display: none; }
