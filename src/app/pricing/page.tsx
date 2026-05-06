@@ -422,166 +422,53 @@ export default function PricingPage() {
             {plans.map((p, i) => (
               <motion.div
                 key={p.code}
+                className={`rf-tier${p.highlighted ? " rf-tier--highlighted" : ""}`}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.55, delay: i * 0.07, ease }}
-                style={{
-                  padding: "clamp(28px, 3vw, 40px)",
-                  borderRight: "1px solid var(--color-rule)",
-                  borderBottom: "1px solid var(--color-rule)",
-                  background: p.highlighted ? "var(--color-graphite)" : "transparent",
-                  color: p.highlighted ? "#fff" : "inherit",
-                  position: "relative",
-                  borderTop: p.highlighted ? "3px solid var(--color-signal)" : "0",
-                  display: "flex",
-                  flexDirection: "column",
-                }}
               >
-                <div
-                  style={{
-                    fontFamily: "var(--font-mono)",
-                    fontSize: 10,
-                    letterSpacing: "0.22em",
-                    color: p.highlighted ? "var(--color-signal)" : "var(--color-signal-deep)",
-                    marginBottom: 14,
-                  }}
-                >
-                  {p.code}
+                <div className="rf-tier-num">{p.code}</div>
+                <h3 className="rf-h3 rf-tier-title">{p.name}</h3>
+                <p className="rf-tier-summary">{p.summary}</p>
+
+                <div className="rf-tier-price-row">
+                  <span className="rf-tier-price">{p.price}</span>
                 </div>
-                <h3
-                  className="rf-h3"
-                  style={{
-                    color: p.highlighted ? "#fff" : "var(--color-graphite)",
-                    marginBottom: 10,
-                  }}
-                >
-                  {p.name}
-                </h3>
-                <p
-                  style={{
-                    fontSize: 13,
-                    lineHeight: 1.55,
-                    color: p.highlighted ? "rgba(255,255,255,0.72)" : "var(--color-ink-soft)",
-                    marginBottom: 18,
-                    minHeight: 64,
-                  }}
-                >
-                  {p.summary}
-                </p>
-                <div style={{ display: "flex", alignItems: "baseline", gap: 6, marginBottom: 4 }}>
-                  <span
-                    style={{
-                      fontFamily: "var(--font-display)",
-                      fontWeight: 600,
-                      fontSize: 40,
-                      letterSpacing: "-0.025em",
-                      color: p.highlighted ? "#fff" : "var(--color-graphite)",
-                    }}
-                  >
-                    {p.price}
-                  </span>
-                </div>
-                <div
-                  style={{
-                    fontFamily: "var(--font-mono)",
-                    fontSize: 11,
-                    color: p.highlighted ? "rgba(255,255,255,0.65)" : "var(--color-ink-soft)",
-                    letterSpacing: "0.1em",
-                    textTransform: "uppercase",
-                    marginBottom: 4,
-                  }}
-                >
-                  {p.period}
-                </div>
+                <div className="rf-tier-period">{p.period}</div>
                 {p.annual ? (
-                  <div
-                    style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: 10,
-                      color: p.highlighted ? "var(--color-signal)" : "var(--color-signal-deep)",
-                      letterSpacing: "0.16em",
-                      textTransform: "uppercase",
-                      marginBottom: 24,
-                    }}
-                  >
+                  <div className="rf-tier-annual">
                     {p.annual} / seat / mo · billed annually
                   </div>
                 ) : (
                   <div style={{ marginBottom: 24 }} />
                 )}
+
                 <Link
                   href={p.href}
-                  className="rf-cta-primary"
-                  target={p.href.startsWith("http") || p.href.startsWith("mailto:") ? "_blank" : undefined}
+                  className="rf-tier-cta"
+                  target={
+                    p.href.startsWith("http") || p.href.startsWith("mailto:")
+                      ? "_blank"
+                      : undefined
+                  }
                   rel={p.href.startsWith("http") ? "noreferrer" : undefined}
-                  style={{
-                    background: p.highlighted ? "var(--color-signal)" : "var(--color-graphite)",
-                    borderBottomColor: p.highlighted ? "#fff" : "var(--color-signal)",
-                    width: "100%",
-                    justifyContent: "center",
-                    marginBottom: 24,
-                  }}
                 >
                   <span>{p.cta}</span>
                   <span className="arrow" aria-hidden="true">→</span>
                 </Link>
+
                 {p.forWho ? (
                   <>
-                    <div
-                      style={{
-                        fontFamily: "var(--font-mono)",
-                        fontSize: 10,
-                        letterSpacing: "0.16em",
-                        textTransform: "uppercase",
-                        color: p.highlighted ? "var(--color-signal)" : "var(--color-signal-deep)",
-                        marginBottom: 12,
-                      }}
-                    >
-                      Best for
-                    </div>
-                    <p
-                      style={{
-                        fontSize: 13,
-                        lineHeight: 1.5,
-                        color: p.highlighted ? "rgba(255,255,255,0.78)" : "var(--color-ink)",
-                        marginBottom: 18,
-                      }}
-                    >
-                      {p.forWho}
-                    </p>
+                    <div className="rf-tier-best-label">Best for</div>
+                    <p className="rf-tier-best-text">{p.forWho}</p>
                   </>
                 ) : null}
-                <ul
-                  style={{
-                    listStyle: "none",
-                    padding: 0,
-                    margin: 0,
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: 8,
-                  }}
-                >
+
+                <ul className="rf-tier-features">
                   {p.features.map((f) => (
-                    <li
-                      key={f}
-                      style={{
-                        display: "grid",
-                        gridTemplateColumns: "16px 1fr",
-                        gap: 10,
-                        fontSize: 13,
-                        color: p.highlighted ? "rgba(255,255,255,0.85)" : "var(--color-ink)",
-                      }}
-                    >
-                      <span
-                        aria-hidden="true"
-                        style={{
-                          width: 6,
-                          height: 6,
-                          background: p.highlighted ? "var(--color-signal)" : "var(--color-signal-deep)",
-                          marginTop: 7,
-                        }}
-                      />
+                    <li key={f} className="rf-tier-feature">
+                      <span className="rf-tier-feature-dot" aria-hidden="true" />
                       <span>{f}</span>
                     </li>
                   ))}

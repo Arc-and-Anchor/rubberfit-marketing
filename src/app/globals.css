@@ -175,6 +175,178 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   background: var(--color-signal);
 }
 
+/* ============================================================
+   Pricing tier — black-on-hover treatment
+   Each tier card adopts the highlighted (graphite + white) state on
+   hover. The static Pro tier gets .rf-tier--highlighted to keep its
+   default emphasis.
+   ============================================================ */
+.rf-tier {
+  padding: clamp(28px, 3vw, 40px);
+  border-right: 1px solid var(--color-rule);
+  border-bottom: 1px solid var(--color-rule);
+  border-top: 3px solid transparent;
+  background: transparent;
+  color: inherit;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: background 280ms ease, color 280ms ease, border-color 280ms ease;
+}
+.rf-tier:hover,
+.rf-tier--highlighted {
+  background: var(--color-graphite);
+  color: #fff;
+  border-top-color: var(--color-signal);
+}
+.rf-tier-num {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  color: var(--color-signal-deep);
+  margin-bottom: 14px;
+  transition: color 280ms ease;
+}
+.rf-tier:hover .rf-tier-num,
+.rf-tier--highlighted .rf-tier-num { color: var(--color-signal); }
+
+.rf-tier-title {
+  margin: 0 0 10px 0;
+  color: var(--color-graphite);
+  transition: color 280ms ease;
+}
+.rf-tier:hover .rf-tier-title,
+.rf-tier--highlighted .rf-tier-title { color: #fff; }
+
+.rf-tier-summary {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--color-ink-soft);
+  margin-bottom: 18px;
+  min-height: 64px;
+  transition: color 280ms ease;
+}
+.rf-tier:hover .rf-tier-summary,
+.rf-tier--highlighted .rf-tier-summary { color: rgba(255, 255, 255, 0.72); }
+
+.rf-tier-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+.rf-tier-price {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 40px;
+  letter-spacing: -0.025em;
+  color: var(--color-graphite);
+  transition: color 280ms ease;
+}
+.rf-tier:hover .rf-tier-price,
+.rf-tier--highlighted .rf-tier-price { color: #fff; }
+
+.rf-tier-period {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-ink-soft);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+  transition: color 280ms ease;
+}
+.rf-tier:hover .rf-tier-period,
+.rf-tier--highlighted .rf-tier-period { color: rgba(255, 255, 255, 0.65); }
+
+.rf-tier-annual {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--color-signal-deep);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  transition: color 280ms ease;
+}
+.rf-tier:hover .rf-tier-annual,
+.rf-tier--highlighted .rf-tier-annual { color: var(--color-signal); }
+
+.rf-tier-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--color-graphite);
+  border-bottom: 3px solid var(--color-signal);
+  padding: 16px 22px;
+  margin-bottom: 24px;
+  transition: background 280ms ease, border-bottom-color 280ms ease;
+}
+.rf-tier:hover .rf-tier-cta,
+.rf-tier--highlighted .rf-tier-cta {
+  background: var(--color-signal);
+  border-bottom-color: #fff;
+}
+.rf-tier-cta .arrow { transition: transform 220ms ease; }
+.rf-tier-cta:hover .arrow { transform: translateX(4px); }
+
+.rf-tier-best-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-signal-deep);
+  margin-bottom: 12px;
+  transition: color 280ms ease;
+}
+.rf-tier:hover .rf-tier-best-label,
+.rf-tier--highlighted .rf-tier-best-label { color: var(--color-signal); }
+
+.rf-tier-best-text {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--color-ink);
+  margin-bottom: 18px;
+  transition: color 280ms ease;
+}
+.rf-tier:hover .rf-tier-best-text,
+.rf-tier--highlighted .rf-tier-best-text { color: rgba(255, 255, 255, 0.78); }
+
+.rf-tier-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.rf-tier-feature {
+  display: grid;
+  grid-template-columns: 16px 1fr;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--color-ink);
+  transition: color 280ms ease;
+}
+.rf-tier:hover .rf-tier-feature,
+.rf-tier--highlighted .rf-tier-feature { color: rgba(255, 255, 255, 0.85); }
+
+.rf-tier-feature-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--color-signal-deep);
+  margin-top: 7px;
+  transition: background 280ms ease;
+}
+.rf-tier:hover .rf-tier-feature-dot,
+.rf-tier--highlighted .rf-tier-feature-dot { background: var(--color-signal); }
+
 /* Home page — waste/offcut section grid */
 .rf-waste-grid {
   display: grid;
