@@ -38,6 +38,15 @@ export function Footer() {
             <div className="rf-footer-col-label">Trust</div>
             <ul>
               <li><Link href="/security">Security</Link></li>
+              <li>
+                <Link
+                  href="https://docs.rubberfit.app/security/data-handling"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Privacy policy
+                </Link>
+              </li>
               <li><Link href="/pricing">Pricing</Link></li>
               <li>
                 <a href="mailto:security@rubberfit.app">security@rubberfit.app</a>
