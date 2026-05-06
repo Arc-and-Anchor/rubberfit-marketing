@@ -278,122 +278,161 @@ export default function Home() {
                 border: "1px solid var(--color-graphite)",
               }}
             >
-              <svg viewBox="0 0 360 360" style={{ width: "100%", height: "100%" }}>
-                {/* Three-loop offcut-reuse cycle */}
-                {[
-                  { label: "ROLL", subtitle: "Fresh stock", x: 180, y: 70, color: "var(--color-graphite)" },
-                  { label: "CUT", subtitle: "Engine packs", x: 290, y: 240, color: "var(--color-blueprint)" },
-                  { label: "OFFCUT", subtitle: "Banked + reused", x: 70, y: 240, color: "var(--color-signal)" },
-                ].map((n, i) => (
-                  <motion.g
-                    key={n.label}
-                    initial={{ scale: 0, opacity: 0 }}
-                    whileInView={{ scale: 1, opacity: 1 }}
-                    viewport={{ once: true, margin: "-60px" }}
-                    transition={{
-                      type: "spring",
-                      stiffness: 220,
-                      damping: 18,
-                      delay: 0.2 + i * 0.15,
-                    }}
-                    style={{ transformOrigin: `${n.x}px ${n.y}px` }}
-                  >
-                    <circle cx={n.x} cy={n.y} r="42" fill="var(--color-canvas)" stroke={n.color} strokeWidth="1.8" />
-                    <text
-                      x={n.x}
-                      y={n.y - 4}
-                      textAnchor="middle"
-                      fontFamily="ui-monospace, JetBrains Mono, Menlo, monospace"
-                      fontSize="11"
-                      letterSpacing="0.22em"
-                      fill={n.color}
-                    >
-                      {n.label}
-                    </text>
-                    <text
-                      x={n.x}
-                      y={n.y + 14}
-                      textAnchor="middle"
-                      fontFamily="Inter, sans-serif"
-                      fontSize="10"
-                      fill="var(--color-ink-soft)"
-                    >
-                      {n.subtitle}
-                    </text>
-                  </motion.g>
-                ))}
+              <svg viewBox="0 0 360 360" fill="none" style={{ width: "100%", height: "100%" }}>
+                {/* Return rail — signal-orange recirculation pipe */}
+                <motion.path
+                  d="M 144 286 L 104 286 Q 92 286 92 274 L 92 86 Q 92 74 104 74 L 144 74"
+                  stroke="var(--color-signal)"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  fill="none"
+                  initial={{ pathLength: 0, opacity: 0 }}
+                  whileInView={{ pathLength: 1, opacity: 1 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ duration: 1.2, ease }}
+                />
+                <motion.polygon
+                  points="138,69 150,74 138,79"
+                  fill="var(--color-signal)"
+                  initial={{ opacity: 0, scale: 0.6 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ duration: 0.3, delay: 1.0, ease }}
+                />
 
-                {/* Connecting arrows — triangular cycle */}
-                {[
-                  { from: { x: 210, y: 100 }, to: { x: 270, y: 210 }, delay: 0.7 },
-                  { from: { x: 240, y: 264 }, to: { x: 120, y: 264 }, delay: 0.85 },
-                  { from: { x: 90, y: 210 }, to: { x: 150, y: 100 }, delay: 1.0 },
-                ].map((a, i) => {
-                  const dx = a.to.x - a.from.x;
-                  const dy = a.to.y - a.from.y;
-                  const len = Math.sqrt(dx * dx + dy * dy);
-                  const ux = dx / len;
-                  const uy = dy / len;
-                  const tipX = a.to.x;
-                  const tipY = a.to.y;
-                  const baseX = tipX - ux * 8;
-                  const baseY = tipY - uy * 8;
-                  const perpX = -uy * 4;
-                  const perpY = ux * 4;
-                  return (
-                    <motion.g
-                      key={`arrow-${i}`}
-                      initial={{ pathLength: 0, opacity: 0 }}
-                      whileInView={{ pathLength: 1, opacity: 1 }}
-                      viewport={{ once: true, margin: "-60px" }}
-                      transition={{ duration: 0.6, delay: a.delay, ease }}
-                    >
-                      <line
-                        x1={a.from.x}
-                        y1={a.from.y}
-                        x2={a.to.x}
-                        y2={a.to.y}
-                        stroke="var(--color-signal)"
-                        strokeWidth="1.5"
-                        strokeDasharray="3 3"
-                      />
-                      <polygon
-                        points={`${tipX},${tipY} ${baseX + perpX},${baseY + perpY} ${baseX - perpX},${baseY - perpY}`}
-                        fill="var(--color-signal)"
-                      />
-                    </motion.g>
-                  );
-                })}
-
-                {/* Center label */}
-                <motion.text
-                  x="180"
-                  y="180"
-                  textAnchor="middle"
-                  fontFamily="Manrope, sans-serif"
-                  fontSize="18"
-                  fontWeight="600"
-                  fill="var(--color-graphite)"
-                  letterSpacing="-0.02em"
+                {/* Forward flow — subordinate ink-soft */}
+                <motion.g
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true, margin: "-60px" }}
-                  transition={{ duration: 0.5, delay: 1.2, ease }}
+                  transition={{ duration: 0.5, delay: 0.5, ease }}
                 >
-                  Closed loop
-                </motion.text>
+                  <line x1="216" y1="100" x2="216" y2="148" stroke="var(--color-ink-soft)" strokeWidth="1.5" />
+                  <polygon points="212,148 220,148 216,156" fill="var(--color-ink-soft)" />
+                  <line x1="216" y1="206" x2="216" y2="254" stroke="var(--color-ink-soft)" strokeWidth="1.5" />
+                  <polygon points="212,254 220,254 216,262" fill="var(--color-ink-soft)" />
+                </motion.g>
+
+                {/* ROLL — fresh stock */}
+                <motion.g
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ duration: 0.6, delay: 0.2, ease }}
+                >
+                  <rect x="144" y="48" width="144" height="52" rx="4" fill="var(--color-surface-raised)" stroke="var(--color-graphite)" strokeWidth="1.5" />
+                  <text
+                    x="216"
+                    y="68"
+                    textAnchor="middle"
+                    dominantBaseline="middle"
+                    fontFamily="ui-monospace, JetBrains Mono, Menlo, monospace"
+                    fontSize="12"
+                    fontWeight="600"
+                    fill="var(--color-graphite)"
+                    letterSpacing="0.1em"
+                  >
+                    ROLL
+                  </text>
+                  <text
+                    x="216"
+                    y="86"
+                    textAnchor="middle"
+                    dominantBaseline="middle"
+                    fontFamily="ui-monospace, JetBrains Mono, Menlo, monospace"
+                    fontSize="9"
+                    fill="var(--color-ink-faint)"
+                    letterSpacing="0.22em"
+                  >
+                    FRESH STOCK
+                  </text>
+                </motion.g>
+
+                {/* CUT — engine packs */}
+                <motion.g
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ duration: 0.6, delay: 0.35, ease }}
+                >
+                  <rect x="144" y="154" width="144" height="52" rx="4" fill="var(--color-surface-raised)" stroke="var(--color-graphite)" strokeWidth="1.5" />
+                  <text
+                    x="216"
+                    y="174"
+                    textAnchor="middle"
+                    dominantBaseline="middle"
+                    fontFamily="ui-monospace, JetBrains Mono, Menlo, monospace"
+                    fontSize="12"
+                    fontWeight="600"
+                    fill="var(--color-graphite)"
+                    letterSpacing="0.1em"
+                  >
+                    CUT
+                  </text>
+                  <text
+                    x="216"
+                    y="192"
+                    textAnchor="middle"
+                    dominantBaseline="middle"
+                    fontFamily="ui-monospace, JetBrains Mono, Menlo, monospace"
+                    fontSize="9"
+                    fill="var(--color-ink-faint)"
+                    letterSpacing="0.22em"
+                  >
+                    ENGINE PACKS
+                  </text>
+                </motion.g>
+
+                {/* OFFCUT — signal hero */}
+                <motion.g
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ duration: 0.6, delay: 0.5, ease }}
+                >
+                  <rect x="144" y="260" width="144" height="52" rx="4" fill="var(--color-surface-raised)" stroke="var(--color-signal)" strokeWidth="2" />
+                  <text
+                    x="216"
+                    y="280"
+                    textAnchor="middle"
+                    dominantBaseline="middle"
+                    fontFamily="ui-monospace, JetBrains Mono, Menlo, monospace"
+                    fontSize="12"
+                    fontWeight="600"
+                    fill="var(--color-signal-deep)"
+                    letterSpacing="0.1em"
+                  >
+                    OFFCUT
+                  </text>
+                  <text
+                    x="216"
+                    y="298"
+                    textAnchor="middle"
+                    dominantBaseline="middle"
+                    fontFamily="ui-monospace, JetBrains Mono, Menlo, monospace"
+                    fontSize="9"
+                    fill="var(--color-ink-faint)"
+                    letterSpacing="0.22em"
+                  >
+                    BANKED + REUSED
+                  </text>
+                </motion.g>
+
+                {/* Spec stamp */}
                 <motion.text
                   x="180"
-                  y="200"
+                  y="340"
                   textAnchor="middle"
+                  dominantBaseline="middle"
                   fontFamily="ui-monospace, JetBrains Mono, Menlo, monospace"
                   fontSize="10"
-                  letterSpacing="0.22em"
                   fill="var(--color-signal-deep)"
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
+                  letterSpacing="0.22em"
+                  initial={{ opacity: 0, y: 4 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-60px" }}
-                  transition={{ duration: 0.5, delay: 1.4, ease }}
+                  transition={{ duration: 0.5, delay: 0.85, ease }}
                 >
                   ZERO MATERIAL UNTRACKED
                 </motion.text>
