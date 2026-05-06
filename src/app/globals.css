@@ -194,7 +194,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   transition: background 280ms ease, color 280ms ease, border-color 280ms ease;
 }
 .rf-tier:hover,
-.rf-tier--highlighted {
+.rf-tier-grid:not(:has(.rf-tier:hover)) .rf-tier--highlighted {
   background: var(--color-graphite);
   color: #fff;
   border-top-color: var(--color-signal);
@@ -208,7 +208,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   transition: color 280ms ease;
 }
 .rf-tier:hover .rf-tier-num,
-.rf-tier--highlighted .rf-tier-num { color: var(--color-signal); }
+.rf-tier-grid:not(:has(.rf-tier:hover)) .rf-tier--highlighted .rf-tier-num { color: var(--color-signal); }
 
 .rf-tier-title {
   margin: 0 0 10px 0;
@@ -216,7 +216,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   transition: color 280ms ease;
 }
 .rf-tier:hover .rf-tier-title,
-.rf-tier--highlighted .rf-tier-title { color: #fff; }
+.rf-tier-grid:not(:has(.rf-tier:hover)) .rf-tier--highlighted .rf-tier-title { color: #fff; }
 
 .rf-tier-summary {
   font-size: 13px;
@@ -227,7 +227,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   transition: color 280ms ease;
 }
 .rf-tier:hover .rf-tier-summary,
-.rf-tier--highlighted .rf-tier-summary { color: rgba(255, 255, 255, 0.72); }
+.rf-tier-grid:not(:has(.rf-tier:hover)) .rf-tier--highlighted .rf-tier-summary { color: rgba(255, 255, 255, 0.72); }
 
 .rf-tier-price-row {
   display: flex;
@@ -244,7 +244,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   transition: color 280ms ease;
 }
 .rf-tier:hover .rf-tier-price,
-.rf-tier--highlighted .rf-tier-price { color: #fff; }
+.rf-tier-grid:not(:has(.rf-tier:hover)) .rf-tier--highlighted .rf-tier-price { color: #fff; }
 
 .rf-tier-period {
   font-family: var(--font-mono);
@@ -256,7 +256,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   transition: color 280ms ease;
 }
 .rf-tier:hover .rf-tier-period,
-.rf-tier--highlighted .rf-tier-period { color: rgba(255, 255, 255, 0.65); }
+.rf-tier-grid:not(:has(.rf-tier:hover)) .rf-tier--highlighted .rf-tier-period { color: rgba(255, 255, 255, 0.65); }
 
 .rf-tier-annual {
   font-family: var(--font-mono);
@@ -268,7 +268,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   transition: color 280ms ease;
 }
 .rf-tier:hover .rf-tier-annual,
-.rf-tier--highlighted .rf-tier-annual { color: var(--color-signal); }
+.rf-tier-grid:not(:has(.rf-tier:hover)) .rf-tier--highlighted .rf-tier-annual { color: var(--color-signal); }
 
 .rf-tier-cta {
   display: inline-flex;
@@ -289,7 +289,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   transition: background 280ms ease, border-bottom-color 280ms ease;
 }
 .rf-tier:hover .rf-tier-cta,
-.rf-tier--highlighted .rf-tier-cta {
+.rf-tier-grid:not(:has(.rf-tier:hover)) .rf-tier--highlighted .rf-tier-cta {
   background: var(--color-signal);
   border-bottom-color: #fff;
 }
@@ -306,7 +306,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   transition: color 280ms ease;
 }
 .rf-tier:hover .rf-tier-best-label,
-.rf-tier--highlighted .rf-tier-best-label { color: var(--color-signal); }
+.rf-tier-grid:not(:has(.rf-tier:hover)) .rf-tier--highlighted .rf-tier-best-label { color: var(--color-signal); }
 
 .rf-tier-best-text {
   font-size: 13px;
@@ -316,7 +316,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   transition: color 280ms ease;
 }
 .rf-tier:hover .rf-tier-best-text,
-.rf-tier--highlighted .rf-tier-best-text { color: rgba(255, 255, 255, 0.78); }
+.rf-tier-grid:not(:has(.rf-tier:hover)) .rf-tier--highlighted .rf-tier-best-text { color: rgba(255, 255, 255, 0.78); }
 
 .rf-tier-features {
   list-style: none;
@@ -335,7 +335,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   transition: color 280ms ease;
 }
 .rf-tier:hover .rf-tier-feature,
-.rf-tier--highlighted .rf-tier-feature { color: rgba(255, 255, 255, 0.85); }
+.rf-tier-grid:not(:has(.rf-tier:hover)) .rf-tier--highlighted .rf-tier-feature { color: rgba(255, 255, 255, 0.85); }
 
 .rf-tier-feature-dot {
   width: 6px;
@@ -345,7 +345,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   transition: background 280ms ease;
 }
 .rf-tier:hover .rf-tier-feature-dot,
-.rf-tier--highlighted .rf-tier-feature-dot { background: var(--color-signal); }
+.rf-tier-grid:not(:has(.rf-tier:hover)) .rf-tier--highlighted .rf-tier-feature-dot { background: var(--color-signal); }
 
 /* Home page — waste/offcut section grid */
 .rf-waste-grid {
