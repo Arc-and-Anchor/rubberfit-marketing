@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { SubPage, SectionHeader } from "@/components/SubPage";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -110,7 +111,7 @@ const plans: Plan[] = [
 const faqs = [
   {
     q: "Is there a free trial?",
-    a: "Yes — 14 days, full Pro features, no credit card. Run real cuts against real stock; if it doesn't pay for itself in the first week, walk away.",
+    a: "Yes — 14 days with full Pro access. We require a card upfront to keep the trial serious, but cancel anytime before day 14 and you won't be charged. If Rubberfit fits your workflow, it auto-converts to your chosen plan. If not, one click shuts it down.",
   },
   {
     q: "How is pricing structured?",
@@ -139,6 +140,9 @@ const faqs = [
 ];
 
 export default function PricingPage() {
+  const [billingInterval, setBillingInterval] = useState<"monthly" | "annual">("annual");
+  const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "https://app.rubberfit.com";
+
   return (
     <SubPage
       hero={{
@@ -410,6 +414,60 @@ export default function PricingPage() {
             body="Monthly numbers below. Annual billing carries a 20% discount, paid upfront — that's the figure in the small print."
           />
 
+          <div style={{ textAlign: "center", marginBottom: 32 }}>
+            <div
+              role="group"
+              aria-label="Billing interval"
+              style={{
+                display: "inline-flex",
+                border: "1px solid var(--color-graphite)",
+                borderRadius: 9999,
+                padding: 3,
+              }}
+            >
+              <button
+                type="button"
+                aria-pressed={billingInterval === "monthly"}
+                onClick={() => setBillingInterval("monthly")}
+                style={{
+                  fontFamily: "var(--font-mono)",
+                  fontSize: 11,
+                  letterSpacing: "0.18em",
+                  textTransform: "uppercase",
+                  borderRadius: 9999,
+                  padding: "8px 16px",
+                  border: "none",
+                  cursor: "pointer",
+                  backgroundColor: billingInterval === "monthly" ? "var(--color-signal)" : "transparent",
+                  color: billingInterval === "monthly" ? "#fff" : "var(--color-ink-soft)",
+                  transition: "background-color 0.2s ease, color 0.2s ease",
+                }}
+              >
+                Monthly
+              </button>
+              <button
+                type="button"
+                aria-pressed={billingInterval === "annual"}
+                onClick={() => setBillingInterval("annual")}
+                style={{
+                  fontFamily: "var(--font-mono)",
+                  fontSize: 11,
+                  letterSpacing: "0.18em",
+                  textTransform: "uppercase",
+                  borderRadius: 9999,
+                  padding: "8px 16px",
+                  border: "none",
+                  cursor: "pointer",
+                  backgroundColor: billingInterval === "annual" ? "var(--color-signal)" : "transparent",
+                  color: billingInterval === "annual" ? "#fff" : "var(--color-ink-soft)",
+                  transition: "background-color 0.2s ease, color 0.2s ease",
+                }}
+              >
+                Annual · save 20%
+              </button>
+            </div>
+          </div>
+
           <div
             className="rf-tier-grid"
             style={{
@@ -420,62 +478,107 @@ export default function PricingPage() {
               background: "var(--color-surface-raised)",
             }}
           >
-            {plans.map((p, i) => (
-              <motion.div
-                key={p.code}
-                className={`rf-tier${p.highlighted ? " rf-tier--highlighted" : ""}`}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.55, delay: i * 0.07, ease }}
-              >
-                <div className="rf-tier-num">{p.code}</div>
-                <h3 className="rf-h3 rf-tier-title">{p.name}</h3>
-                <p className="rf-tier-summary">{p.summary}</p>
+            {plans.map((p, i) => {
+              const isEnterprise = p.code === "ENTERPRISE";
+              const href = isEnterprise
+                ? p.href
+                : `${APP_URL}/register?plan=${p.code.toLowerCase()}&billing=${billingInterval}`;
+              const ctaLabel = isEnterprise
+                ? p.cta
+                : billingInterval === "monthly"
+                ? `Start trial — ${p.price}/mo`
+                : `Start trial — ${p.annual}/mo`;
+              const priceDisplay = isEnterprise
+                ? p.price
+                : billingInterval === "annual"
+                ? p.annual
+                : p.price;
+              const periodDisplay = isEnterprise
+                ? p.period
+                : billingInterval === "annual"
+                ? "/ seat / mo · billed annually"
+                : "/ seat / month";
+              const linkTarget =
+                isEnterprise && (p.href.startsWith("http") || p.href.startsWith("mailto:"))
+                  ? "_blank"
+                  : undefined;
+              const linkRel = isEnterprise && p.href.startsWith("http") ? "noreferrer" : undefined;
 
-                <div className="rf-tier-price-row">
-                  <span className="rf-tier-price">{p.price}</span>
-                </div>
-                <div className="rf-tier-period">{p.period}</div>
-                {p.annual ? (
-                  <div className="rf-tier-annual">
-                    {p.annual} / seat / mo · billed annually
-                  </div>
-                ) : (
-                  <div style={{ marginBottom: 24 }} />
-                )}
-
-                <Link
-                  href={p.href}
-                  className="rf-tier-cta"
-                  target={
-                    p.href.startsWith("http") || p.href.startsWith("mailto:")
-                      ? "_blank"
-                      : undefined
-                  }
-                  rel={p.href.startsWith("http") ? "noreferrer" : undefined}
+              return (
+                <motion.div
+                  key={p.code}
+                  className={`rf-tier${p.highlighted ? " rf-tier--highlighted" : ""}`}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ duration: 0.55, delay: i * 0.07, ease }}
                 >
-                  <span>{p.cta}</span>
-                  <span className="arrow" aria-hidden="true">→</span>
-                </Link>
+                  <div className="rf-tier-num">{p.code}</div>
+                  <h3 className="rf-h3 rf-tier-title">{p.name}</h3>
+                  <p className="rf-tier-summary">{p.summary}</p>
 
-                {p.forWho ? (
-                  <>
-                    <div className="rf-tier-best-label">Best for</div>
-                    <p className="rf-tier-best-text">{p.forWho}</p>
-                  </>
-                ) : null}
+                  <div className="rf-tier-price-row">
+                    <AnimatePresence mode="wait">
+                      <motion.span
+                        key={billingInterval}
+                        className="rf-tier-price"
+                        style={{ fontVariantNumeric: "tabular-nums", display: "inline-block" }}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        {priceDisplay}
+                      </motion.span>
+                    </AnimatePresence>
+                  </div>
+                  <div className="rf-tier-period">
+                    <AnimatePresence mode="wait">
+                      <motion.span
+                        key={billingInterval}
+                        style={{
+                          display: "inline-block",
+                          fontVariantNumeric: "tabular-nums",
+                        }}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        {periodDisplay}
+                      </motion.span>
+                    </AnimatePresence>
+                  </div>
 
-                <ul className="rf-tier-features">
-                  {p.features.map((f) => (
-                    <li key={f} className="rf-tier-feature">
-                      <span className="rf-tier-feature-dot" aria-hidden="true" />
-                      <span>{f}</span>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            ))}
+                  <Link
+                    href={href}
+                    className="rf-tier-cta"
+                    prefetch={false}
+                    target={linkTarget}
+                    rel={linkRel}
+                  >
+                    <span>{ctaLabel}</span>
+                    <span className="arrow" aria-hidden="true">→</span>
+                  </Link>
+
+                  {p.forWho ? (
+                    <>
+                      <div className="rf-tier-best-label">Best for</div>
+                      <p className="rf-tier-best-text">{p.forWho}</p>
+                    </>
+                  ) : null}
+
+                  <ul className="rf-tier-features">
+                    {p.features.map((f) => (
+                      <li key={f} className="rf-tier-feature">
+                        <span className="rf-tier-feature-dot" aria-hidden="true" />
+                        <span>{f}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              );
+            })}
           </div>
 
           <p
