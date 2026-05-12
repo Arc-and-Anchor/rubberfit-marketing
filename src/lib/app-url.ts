@@ -5,5 +5,9 @@
  * apex.
  */
 export function appUrl(): string {
-  return process.env.NEXT_PUBLIC_APP_URL?.trim() || "https://rubberfit.app"
+  const raw =
+    process.env.NEXT_PUBLIC_APP_URL?.trim() || "https://rubberfit.app";
+  // Strip trailing slashes so callers can append `/register?…` cleanly even
+  // when the env value is set to `https://rubberfit.app/`.
+  return raw.replace(/\/+$/, "");
 }
