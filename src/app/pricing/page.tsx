@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { SubPage, SectionHeader } from "@/components/SubPage";
+import { appUrl } from "@/lib/app-url";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -141,7 +142,7 @@ const faqs = [
 
 export default function PricingPage() {
   const [billingInterval, setBillingInterval] = useState<"monthly" | "annual">("annual");
-  const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "https://rubberfit.app";
+  const APP_URL = appUrl();
 
   return (
     <SubPage

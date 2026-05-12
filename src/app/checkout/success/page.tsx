@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { SubPage } from "@/components/SubPage";
+import { appUrl } from "@/lib/app-url";
 
 export const metadata = {
   title: "Welcome to Rubberfit",
@@ -142,7 +143,7 @@ export default function CheckoutSuccessPage() {
 
             <div style={{ marginTop: 36 }}>
               <Link
-                href="https://app.rubberfit.com/login"
+                href={`${appUrl()}/login`}
                 className="rf-cta-primary"
                 style={{
                   background: "var(--color-signal)",

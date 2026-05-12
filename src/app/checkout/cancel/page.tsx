@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { SubPage } from "@/components/SubPage";
+import { appUrl } from "@/lib/app-url";
 
 export const metadata = {
   title: "Checkout cancelled — Rubberfit",
@@ -80,7 +81,7 @@ export default function CheckoutCancelPage() {
             }}
           >
             <Link
-              href="https://app.rubberfit.com/checkout"
+              href={`${appUrl()}/checkout`}
               className="rf-cta-primary"
               style={{
                 background: "var(--color-signal)",
