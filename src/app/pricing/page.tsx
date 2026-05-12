@@ -141,7 +141,7 @@ const faqs = [
 
 export default function PricingPage() {
   const [billingInterval, setBillingInterval] = useState<"monthly" | "annual">("annual");
-  const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "https://app.rubberfit.com";
+  const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "https://rubberfit.app";
 
   return (
     <SubPage
