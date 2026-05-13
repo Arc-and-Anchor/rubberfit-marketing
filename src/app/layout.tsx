@@ -24,9 +24,27 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://get.rubberfit.app"),
   title: "Rubberfit — Material that lands flat.",
   description:
     "Manufacturing operations for rubber-roll fabricators. A Rust nesting engine plus an AI-augmented planner turn raw stock into operator-grade cut layouts.",
+  alternates: {
+    canonical: "https://get.rubberfit.app",
+  },
+  openGraph: {
+    title: "Rubberfit — Material that lands flat.",
+    description:
+      "Manufacturing operations for rubber-roll fabricators. A Rust nesting engine plus an AI-augmented planner turn raw stock into operator-grade cut layouts.",
+    url: "https://get.rubberfit.app",
+    siteName: "Rubberfit",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Rubberfit — Material that lands flat.",
+    description:
+      "Manufacturing operations for rubber-roll fabricators. A Rust nesting engine plus an AI-augmented planner turn raw stock into operator-grade cut layouts.",
+  },
 };
 
 export default function RootLayout({
