@@ -1,12 +1,14 @@
 import type { MetadataRoute } from "next";
 
+import { SITE_URL } from "@/app/site";
+
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: ["/checkout/"],
+      disallow: ["/checkout", "/checkout/"],
     },
-    sitemap: "https://get.rubberfit.app/sitemap.xml",
+    sitemap: `${SITE_URL}/sitemap.xml`,
   };
 }
