@@ -1,5 +1,7 @@
 import type { MetadataRoute } from "next";
 
+import { SITE_LAST_MODIFIED, SITE_URL } from "@/app/site";
+
 const routes = [
   "",
   "/cutting-engine",
@@ -11,11 +13,9 @@ const routes = [
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date();
-
   return routes.map((route) => ({
-    url: `https://get.rubberfit.app${route}`,
-    lastModified,
+    url: `${SITE_URL}${route}`,
+    lastModified: SITE_LAST_MODIFIED,
     changeFrequency: "weekly",
     priority: route === "" ? 1 : 0.8,
   }));

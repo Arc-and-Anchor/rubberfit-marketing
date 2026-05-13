@@ -2,6 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter, Manrope, JetBrains_Mono } from "next/font/google";
 import { MotionProvider } from "@/components/MotionProvider";
+import { SITE_URL } from "@/app/site";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -24,18 +25,18 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://get.rubberfit.app"),
+  metadataBase: new URL(SITE_URL),
   title: "Rubberfit — Material that lands flat.",
   description:
     "Manufacturing operations for rubber-roll fabricators. A Rust nesting engine plus an AI-augmented planner turn raw stock into operator-grade cut layouts.",
   alternates: {
-    canonical: "https://get.rubberfit.app",
+    canonical: SITE_URL,
   },
   openGraph: {
     title: "Rubberfit — Material that lands flat.",
     description:
       "Manufacturing operations for rubber-roll fabricators. A Rust nesting engine plus an AI-augmented planner turn raw stock into operator-grade cut layouts.",
-    url: "https://get.rubberfit.app",
+    url: SITE_URL,
     siteName: "Rubberfit",
     type: "website",
   },
