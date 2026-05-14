@@ -8,21 +8,21 @@ import { SubPage } from "@/components/SubPage";
 const ease = [0.22, 1, 0.36, 1] as const;
 
 const sections = [
-  { id: "s01", num: "§01", title: "Acceptance" },
-  { id: "s02", num: "§02", title: "The service" },
-  { id: "s03", num: "§03", title: "Accounts" },
-  { id: "s04", num: "§04", title: "Subscription, billing, and trials" },
-  { id: "s05", num: "§05", title: "Acceptable use" },
-  { id: "s06", num: "§06", title: "Your data" },
-  { id: "s07", num: "§07", title: "Intellectual property" },
-  { id: "s08", num: "§08", title: "Confidentiality" },
-  { id: "s09", num: "§09", title: "Term and termination" },
-  { id: "s10", num: "§10", title: "Disclaimer of warranties" },
-  { id: "s11", num: "§11", title: "Limitation of liability" },
-  { id: "s12", num: "§12", title: "Indemnification" },
-  { id: "s13", num: "§13", title: "Governing law" },
-  { id: "s14", num: "§14", title: "Changes to these Terms" },
-  { id: "s15", num: "§15", title: "Contact" },
+  { id: "s01", num: "01", title: "Acceptance" },
+  { id: "s02", num: "02", title: "The service" },
+  { id: "s03", num: "03", title: "Accounts" },
+  { id: "s04", num: "04", title: "Subscription, billing, and trials" },
+  { id: "s05", num: "05", title: "Acceptable use" },
+  { id: "s06", num: "06", title: "Your data" },
+  { id: "s07", num: "07", title: "Intellectual property" },
+  { id: "s08", num: "08", title: "Confidentiality" },
+  { id: "s09", num: "09", title: "Term and termination" },
+  { id: "s10", num: "10", title: "Disclaimer of warranties" },
+  { id: "s11", num: "11", title: "Limitation of liability" },
+  { id: "s12", num: "12", title: "Indemnification" },
+  { id: "s13", num: "13", title: "Governing law" },
+  { id: "s14", num: "14", title: "Changes to these Terms" },
+  { id: "s15", num: "15", title: "Contact" },
 ];
 
 export default function TermsPage() {
@@ -182,91 +182,91 @@ export default function TermsPage() {
                   gap: 0,
                 }}
               >
-                <LegalSection id="s01" num="§01" title="Acceptance">
+                <LegalSection id="s01" num="01" title="Acceptance">
                   <p>
                     By creating an account or using Rubberfit, you agree to these Terms. If you are using Rubberfit on behalf of an organization, you represent that you have the authority to bind that organization to these Terms. If you do not agree, do not use the service.
                   </p>
                 </LegalSection>
 
-                <LegalSection id="s02" num="§02" title="The service">
+                <LegalSection id="s02" num="02" title="The service">
                   <p>
                     Rubberfit is a manufacturing-operations application for rubber-roll fabricators, delivered as software-as-a-service over the public internet. The features available to your account depend on the subscription tier you select. The service description on <Link href="/pricing">/pricing</Link> reflects what is included at each tier as of the Effective date above.
                   </p>
                 </LegalSection>
 
-                <LegalSection id="s03" num="§03" title="Accounts">
+                <LegalSection id="s03" num="03" title="Accounts">
                   <p>
                     You are responsible for keeping your sign-in credentials confidential and for all activity that occurs under your account. You will provide accurate account information and keep it updated. You will not share your account with another person or transfer it without our written consent.
                   </p>
                 </LegalSection>
 
-                <LegalSection id="s04" num="§04" title="Subscription, billing, and trials">
+                <LegalSection id="s04" num="04" title="Subscription, billing, and trials">
                   <p>
                     Subscriptions are sold on a per-seat basis, billed monthly or annually through Stripe. Free trials, when offered, run for the duration disclosed at sign-up and convert to a paid subscription unless cancelled before the trial ends. Subscriptions auto-renew at the end of each billing period at the then-current rate for your selected plan. You can cancel at any time from the Stripe Customer Portal accessible from <code>Settings → Billing</code> inside the application. Cancellation takes effect at the end of the current billing period; we do not pro-rate refunds for partial periods unless required by law.
                   </p>
                 </LegalSection>
 
-                <LegalSection id="s05" num="§05" title="Acceptable use">
+                <LegalSection id="s05" num="05" title="Acceptable use">
                   <p>
                     You will not (a) use the service to violate any applicable law, (b) attempt to reverse engineer, decompile, or extract source code from the service, (c) probe, scan, or test the vulnerability of any part of the service except as expressly authorized in our security program, (d) interfere with the service for other customers, (e) use the service to send unsolicited commercial messages, or (f) use automated means to extract data beyond what is documented in the public API.
                   </p>
                 </LegalSection>
 
-                <LegalSection id="s06" num="§06" title="Your data">
+                <LegalSection id="s06" num="06" title="Your data">
                   <p>
                     You own the inventory, customers, jobs, cut histories, and PDFs you create inside Rubberfit. You grant us a limited license to host, process, and transmit that content solely to deliver the service to you and to the users you authorize. We will not use your workspace data to train models or sell it to third parties. The technical, organizational, and physical controls that protect your data are described in our <Link href="/legal/privacy">Privacy Policy</Link>.
                   </p>
                 </LegalSection>
 
-                <LegalSection id="s07" num="§07" title="Intellectual property">
+                <LegalSection id="s07" num="07" title="Intellectual property">
                   <p>
                     The Rubberfit software, brand, designs, and documentation are owned by Arc & Anchor and are licensed to you under these Terms, not transferred. The license terminates when your subscription ends. We welcome feedback; if you submit suggestions or feature requests, we may use them without obligation to you.
                   </p>
                 </LegalSection>
 
-                <LegalSection id="s08" num="§08" title="Confidentiality">
+                <LegalSection id="s08" num="08" title="Confidentiality">
                   <p>
                     If we share non-public information with you under these Terms (pricing not on the public site, security questionnaires, roadmaps), you will use that information only for the purpose for which it was shared and will not disclose it to third parties except as required by law.
                   </p>
                 </LegalSection>
 
-                <LegalSection id="s09" num="§09" title="Term and termination">
+                <LegalSection id="s09" num="09" title="Term and termination">
                   <p>
                     These Terms apply for as long as you have an active account. We may suspend or terminate access for material breach of these Terms — with notice and an opportunity to cure, unless the breach causes immediate risk to other customers, the service, or us. You may terminate by cancelling your subscription and requesting workspace deletion under our <Link href="/legal/privacy">Privacy Policy</Link>.
                   </p>
                 </LegalSection>
 
-                <LegalSection id="s10" num="§10" title="Disclaimer of warranties">
+                <LegalSection id="s10" num="10" title="Disclaimer of warranties">
                   <p>
                     The service is provided &ldquo;as is&rdquo; and &ldquo;as available.&rdquo; To the maximum extent permitted by law, we disclaim all implied warranties, including merchantability, fitness for a particular purpose, and non-infringement. We do not warrant that the service will be uninterrupted or error-free, or that the cut layouts, estimates, or reports it produces will be free of defects.
                   </p>
                 </LegalSection>
 
-                <LegalSection id="s11" num="§11" title="Limitation of liability">
+                <LegalSection id="s11" num="11" title="Limitation of liability">
                   <p>
                     To the maximum extent permitted by law, neither party will be liable for indirect, incidental, consequential, special, or punitive damages, including lost profits or lost data, even if advised of the possibility. Our aggregate liability for any claim arising from or related to these Terms or the service will not exceed the fees you paid for the service in the twelve months preceding the event giving rise to the claim.
                   </p>
                 </LegalSection>
 
-                <LegalSection id="s12" num="§12" title="Indemnification">
+                <LegalSection id="s12" num="12" title="Indemnification">
                   <p>
                     You will defend, indemnify, and hold harmless Arc & Anchor from any third-party claim arising from your violation of these Terms or your misuse of the service. We will defend, indemnify, and hold you harmless from a third-party claim that your authorized use of the service infringes that third party&rsquo;s intellectual property rights, provided you notify us promptly and let us control the defense.
                   </p>
                 </LegalSection>
 
-                <LegalSection id="s13" num="§13" title="Governing law">
+                <LegalSection id="s13" num="13" title="Governing law">
                   <p>
                     These Terms are governed by the laws of the State of Nevada, USA, without regard to conflict-of-laws rules. The state and federal courts located in Clark County, Nevada have exclusive jurisdiction over any dispute arising from these Terms, and you consent to that jurisdiction.
                   </p>
                 </LegalSection>
 
-                <LegalSection id="s14" num="§14" title="Changes to these Terms">
+                <LegalSection id="s14" num="14" title="Changes to these Terms">
                   <p>
                     We may update these Terms. Material changes will be announced by email to workspace owners at least 30 days before they take effect. Continued use of the service after the effective date of a change constitutes acceptance of the updated Terms.
                   </p>
                 </LegalSection>
 
-                <LegalSection id="s15" num="§15" title="Contact">
+                <LegalSection id="s15" num="15" title="Contact">
                   <p>
                     <a href="mailto:legal@rubberfit.app">legal@rubberfit.app</a> · Arc & Anchor · Las Vegas, NV, USA.
                   </p>
@@ -280,8 +280,6 @@ export default function TermsPage() {
                   transition={{ duration: 0.5, ease }}
                   style={{
                     marginTop: "clamp(40px, 5vw, 64px)",
-                    paddingTop: 32,
-                    borderTop: "1px solid var(--color-rule)",
                     textAlign: "center",
                     fontFamily: "var(--font-mono)",
                     fontSize: 12,

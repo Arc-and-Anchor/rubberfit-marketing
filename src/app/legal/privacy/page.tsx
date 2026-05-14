@@ -8,16 +8,16 @@ import { SubPage } from "@/components/SubPage";
 const ease = [0.22, 1, 0.36, 1] as const;
 
 const sections = [
-  { id: "s01", num: "§01", title: "Who we are" },
-  { id: "s02", num: "§02", title: "What we collect" },
-  { id: "s03", num: "§03", title: "How we use it" },
-  { id: "s04", num: "§04", title: "Sub-processors" },
-  { id: "s05", num: "§05", title: "Cookies" },
-  { id: "s06", num: "§06", title: "Retention" },
-  { id: "s07", num: "§07", title: "Your rights" },
-  { id: "s08", num: "§08", title: "Security" },
-  { id: "s09", num: "§09", title: "Changes" },
-  { id: "s10", num: "§10", title: "Contact" },
+  { id: "s01", num: "01", title: "Who we are" },
+  { id: "s02", num: "02", title: "What we collect" },
+  { id: "s03", num: "03", title: "How we use it" },
+  { id: "s04", num: "04", title: "Sub-processors" },
+  { id: "s05", num: "05", title: "Cookies" },
+  { id: "s06", num: "06", title: "Retention" },
+  { id: "s07", num: "07", title: "Your rights" },
+  { id: "s08", num: "08", title: "Security" },
+  { id: "s09", num: "09", title: "Changes" },
+  { id: "s10", num: "10", title: "Contact" },
 ];
 
 export default function PrivacyPage() {
@@ -177,13 +177,13 @@ export default function PrivacyPage() {
                   gap: 0,
                 }}
               >
-                <LegalSection id="s01" num="§01" title="Who we are">
+                <LegalSection id="s01" num="01" title="Who we are">
                   <p>
                     Rubberfit is operated by Arc & Anchor, a Nevada-based software firm. When you use the application at <code>rubberfit.app</code> or any of its subdomains, Arc & Anchor is the controller of the personal data described in this policy. You can reach us at <a href="mailto:legal@rubberfit.app">legal@rubberfit.app</a> (privacy questions) or <a href="mailto:security@rubberfit.app">security@rubberfit.app</a> (security questionnaires).
                   </p>
                 </LegalSection>
 
-                <LegalSection id="s02" num="§02" title="What we collect">
+                <LegalSection id="s02" num="02" title="What we collect">
                   <ul className="legal-list">
                     <li>
                       <strong>Account data.</strong> Email, name, organization name, and password hash. When you sign in with Google OAuth, we receive your email and name; we do not store the OAuth credential itself.
@@ -203,13 +203,13 @@ export default function PrivacyPage() {
                   </ul>
                 </LegalSection>
 
-                <LegalSection id="s03" num="§03" title="How we use it">
+                <LegalSection id="s03" num="03" title="How we use it">
                   <p>
                     We use this data to deliver and operate the application, send transactional email (magic links, billing receipts, password resets), respond to support and security questions, bill your subscription, prevent abuse, and meet legal obligations. We do not use customer data to train models. We do not sell or rent data to third parties.
                   </p>
                 </LegalSection>
 
-                <LegalSection id="s04" num="§04" title="Sub-processors">
+                <LegalSection id="s04" num="04" title="Sub-processors">
                   <div className="legal-table-wrap">
                     <table className="legal-table">
                       <caption className="sr-only">Sub-processors that touch customer data</caption>
@@ -259,13 +259,13 @@ export default function PrivacyPage() {
                   </p>
                 </LegalSection>
 
-                <LegalSection id="s05" num="§05" title="Cookies">
+                <LegalSection id="s05" num="05" title="Cookies">
                   <p>
                     We use a session cookie and a refresh cookie to keep you logged in. Both are <code>HttpOnly</code>, <code>Secure</code>, and <code>SameSite=Lax</code>. We do not use third-party advertising cookies on the application. Marketing pages may set a cookieless analytics identifier via Vercel Analytics.
                   </p>
                 </LegalSection>
 
-                <LegalSection id="s06" num="§06" title="Retention">
+                <LegalSection id="s06" num="06" title="Retention">
                   <div className="legal-table-wrap">
                     <table className="legal-table">
                       <caption className="sr-only">Retention windows by data class</caption>
@@ -308,25 +308,25 @@ export default function PrivacyPage() {
                   </p>
                 </LegalSection>
 
-                <LegalSection id="s07" num="§07" title="Your rights">
+                <LegalSection id="s07" num="07" title="Your rights">
                   <p>
                     You can request a full data export from <code>Settings → Data → Export</code> inside the application, or by emailing <a href="mailto:legal@rubberfit.app">legal@rubberfit.app</a>. You can request hard deletion of your workspace and all associated personal data by the same email; we complete the deletion within 30 days. If you are a California resident, you have the rights granted under the CCPA, including the right to know, the right to delete, and the right to non-discrimination for exercising those rights. We do not sell personal information.
                   </p>
                 </LegalSection>
 
-                <LegalSection id="s08" num="§08" title="Security">
+                <LegalSection id="s08" num="08" title="Security">
                   <p>
                     The technical controls behind this policy — Postgres RLS, six-role RBAC, audit log, signed-URL document sharing, encryption at rest — are documented at <Link href="/security">/security</Link> and in the docs site under <code>docs.rubberfit.app/security/posture</code>.
                   </p>
                 </LegalSection>
 
-                <LegalSection id="s09" num="§09" title="Changes">
+                <LegalSection id="s09" num="09" title="Changes">
                   <p>
                     We will update this policy when we change the underlying practices. The &ldquo;Effective&rdquo; date at the top reflects the version currently in force. Material changes will be announced by email to workspace owners and noted on the application sign-in page.
                   </p>
                 </LegalSection>
 
-                <LegalSection id="s10" num="§10" title="Contact">
+                <LegalSection id="s10" num="10" title="Contact">
                   <p>
                     <a href="mailto:legal@rubberfit.app">legal@rubberfit.app</a> · Arc & Anchor · Las Vegas, NV, USA.
                   </p>
@@ -340,8 +340,6 @@ export default function PrivacyPage() {
                   transition={{ duration: 0.5, ease }}
                   style={{
                     marginTop: "clamp(40px, 5vw, 64px)",
-                    paddingTop: 32,
-                    borderTop: "1px solid var(--color-rule)",
                     textAlign: "center",
                     fontFamily: "var(--font-mono)",
                     fontSize: 12,
