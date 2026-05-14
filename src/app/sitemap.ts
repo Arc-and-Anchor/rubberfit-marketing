@@ -10,6 +10,8 @@ const routes = [
   "/how-it-works",
   "/security",
   "/pricing",
+  "/legal/privacy",
+  "/legal/terms",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

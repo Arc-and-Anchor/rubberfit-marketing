@@ -17,9 +17,11 @@ export type SubPageHeroProps = {
 export function SubPage({
   hero,
   children,
+  hideCtaSection,
 }: {
   hero: SubPageHeroProps;
   children: React.ReactNode;
+  hideCtaSection?: boolean;
 }) {
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -70,32 +72,34 @@ export function SubPage({
 
       {children}
 
-      <section className="rf-section" style={{ background: "var(--color-graphite)", color: "#fff" }}>
-        <div className="rf-wrap">
-          <div className="fade-up" style={{ textAlign: "center" }}>
-            <div className="rf-eyebrow" style={{ color: "#bcbfc6" }}>
-              <span className="tick" aria-hidden="true" />
-              <span>Ready when you are</span>
+      {!hideCtaSection && (
+        <section className="rf-section" style={{ background: "var(--color-graphite)", color: "#fff" }}>
+          <div className="rf-wrap">
+            <div className="fade-up" style={{ textAlign: "center" }}>
+              <div className="rf-eyebrow" style={{ color: "#bcbfc6" }}>
+                <span className="tick" aria-hidden="true" />
+                <span>Ready when you are</span>
+              </div>
+              <h2 className="rf-h2" style={{ color: "#fff", maxWidth: "22ch", margin: "0 auto" }}>
+                See the price. <em style={{ color: "var(--color-signal)" }}>Start a trial.</em>
+              </h2>
+              <p className="rf-body" style={{ color: "#bcbfc6", margin: "20px auto 36px", maxWidth: "44ch" }}>
+                Per-seat pricing. 14-day free trial, no credit card. Run real
+                cuts against your own stock — if it doesn&apos;t pay for itself
+                the first week, walk.
+              </p>
+              <Link
+                href="/pricing"
+                className="rf-cta-primary"
+                style={{ background: "var(--color-signal)", borderBottomColor: "#fff" }}
+              >
+                <span>See pricing</span>
+                <span className="arrow" aria-hidden="true">→</span>
+              </Link>
             </div>
-            <h2 className="rf-h2" style={{ color: "#fff", maxWidth: "22ch", margin: "0 auto" }}>
-              See the price. <em style={{ color: "var(--color-signal)" }}>Start a trial.</em>
-            </h2>
-            <p className="rf-body" style={{ color: "#bcbfc6", margin: "20px auto 36px", maxWidth: "44ch" }}>
-              Per-seat pricing. 14-day free trial, no credit card. Run real
-              cuts against your own stock — if it doesn&apos;t pay for itself
-              the first week, walk.
-            </p>
-            <Link
-              href="/pricing"
-              className="rf-cta-primary"
-              style={{ background: "var(--color-signal)", borderBottomColor: "#fff" }}
-            >
-              <span>See pricing</span>
-              <span className="arrow" aria-hidden="true">→</span>
-            </Link>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       <Footer />
     </>
